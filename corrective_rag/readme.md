@@ -8,3 +8,5 @@
 
 Pictorial view of the corrective rag 
 ![corrective rag](https://github.com/viswanath27/latest_rag/blob/main/corrective_rag/images/corrective_rag.png)
+
+Paper which is giving the detail of the [Corrective Rag](https://github.com/viswanath27/latest_rag/blob/main/corrective_rag/docs/2401.15884v2.pdf)
