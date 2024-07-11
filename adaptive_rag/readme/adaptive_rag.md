@@ -7,6 +7,9 @@ Overview of adaptive RAG is shown below
 
 ## Query Analysis
 This will come up related to index or unrelated to index. This is simply telling that if related to index it will go to RAG and if not it will go to web search.
+1. Query analysis
+2. Related to index
+3. not related to index
 
 ## RAG + Self reflection 
 1. Retrieve the node
