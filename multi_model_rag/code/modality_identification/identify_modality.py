@@ -4,7 +4,7 @@ import os
 import json
 import base64
 
-class tableData():
+class tableData:
     def __init__(self, file_path):
         self.file_path = file_path
 
@@ -107,4 +107,4 @@ processed_img_data = imageData(pdf_path)
 img_data = processed_img_data.process_img_data()
 
 # Print the JSON string
-print(img_data)
+# print(img_data[0])
