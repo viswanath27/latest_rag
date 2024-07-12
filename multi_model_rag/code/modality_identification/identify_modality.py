@@ -4,27 +4,10 @@ import os
 import json
 import base64
 
-class modalityData:
+class tableData():
     def __init__(self, file_path):
-        self.file_path = file_path 
-        pass
+        self.file_path = file_path
 
-    def extract_text(self):
-        # Open the PDF file
-        doc = fitz.open(self.file_path)
-        text = ""
-        for page_num in range(len(doc)):
-            page = doc.load_page(page_num)
-            text += page.get_text()
-        return text
-
-    # def extract_tables(self):
-    #     tables = []
-    #     with pdfplumber.open(self.file_path) as pdf:
-    #         for page in pdf.pages:
-    #             tables.extend(page.extract_tables())
-    #     return tables
-    
     def extract_tables(self):
         tables = {}
         with pdfplumber.open(self.file_path) as pdf:
@@ -38,7 +21,11 @@ class modalityData:
         tables = self.extract_tables()
         tables_json = json.dumps(tables, indent=4)
         return tables_json
-
+    
+class imageData:
+    def __init__(self, file_path):
+        self.file_path = file_path  
+    
     def extract_images(self):
         doc = fitz.open(self.file_path)
         images = []
@@ -78,19 +65,36 @@ class modalityData:
         # Convert the image_data dictionary to a JSON string
         image_data_json = json.dumps(image_data, indent=4)
         return image_data_json
+
+class textData:
+    def __init__(self, file_path):
+        self.file_path = file_path 
+
+    def extract_text(self):
+        # Open the PDF file
+        doc = fitz.open(self.file_path)
+        text = ""
+        for page_num in range(len(doc)):
+            page = doc.load_page(page_num)
+            text += page.get_text()
+        return text
+
+
+
     
 
 # Path to the PDF file
 pdf_path = "report.pdf"
-
-data_process = modalityData(pdf_path)
+data_process = textData(pdf_path)
 # Extract text
 text_content = data_process.extract_text()
 print("Extracted Text:")
 print(text_content[:500])  # Print the first 500 characters of the text
 
+
 # Extract tables
-tables_content = data_process.extract_tables_to_json()
+processed_table_data = tableData(pdf_path)
+tables_content = processed_table_data.extract_tables_to_json()
 print(tables_content)
 # print("\nExtracted Tables:")
 # for table in tables_content:
@@ -98,8 +102,9 @@ print(tables_content)
 #         print(row)
 #     print("\n")
 
-
-img_data = data_process.process_img_data()
+# Extract tables
+processed_img_data = imageData(pdf_path)
+img_data = processed_img_data.process_img_data()
 
 # Print the JSON string
-# print(img_data)
+print(img_data)
