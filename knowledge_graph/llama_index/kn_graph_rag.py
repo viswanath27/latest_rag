@@ -1,28 +1,39 @@
 # My OpenAI Key
 import os
-
-os.environ["OPENAI_API_KEY"] = "INSERT OPENAI KEY"
-
 import logging
 import sys
-
-logging.basicConfig(stream=sys.stdout, level=logging.INFO)
-
+from azure.keyvault.secrets import SecretClient
+from azure.identity import DefaultAzureCredential
 from llama_index.core import SimpleDirectoryReader, KnowledgeGraphIndex
 from llama_index.core.graph_stores import SimpleGraphStore
 
 from llama_index.llms.openai import OpenAI
 from llama_index.core import Settings
-from IPython.display import Markdown, display
+# from IPython.display import Markdown, display
+
+#keyVaultName = os.environ["KEY_VAULT_NAME"]
+keyVaultName = "advait-vault"
+KVUri = f"https://{keyVaultName}.vault.azure.net"
+
+credential = DefaultAzureCredential()
+client = SecretClient(vault_url=KVUri, credential=credential)
+
+def get_secret(client, secret_name):
+    return client.get_secret(secret_name).value
+
+OPENAI_API_KEY = get_secret(client, "OPENAI-API-KEY")
+
+print("Setting the env variables")
+os.environ['OPENAI_API_KEY'] = OPENAI_API_KEY
 
 documents = SimpleDirectoryReader(
-    "../../../../examples/paul_graham_essay/data"
+    "./docs"
 ).load_data()
 
 # define LLM
 # NOTE: at the time of demo, text-davinci-002 did not have rate-limit errors
 
-llm = OpenAI(temperature=0, model="text-davinci-002")
+llm = OpenAI(temperature=0, model="gpt-4o-2024-05-13")
 Settings.llm = llm
 Settings.chunk_size = 512
 
@@ -45,5 +56,5 @@ query_engine = index.as_query_engine(
 response = query_engine.query(
     "Tell me more about Interleaf",
 )
-
-display(Markdown(f"{response}"))
+print(f"response:{response}")
+# display(Markdown(f"{response}"))
