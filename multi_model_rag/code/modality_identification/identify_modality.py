@@ -1,6 +1,8 @@
 import fitz  # PyMuPDF
 import pdfplumber
 import os
+import json
+import base64
 
 class modalityData:
     def __init__(self, file_path):
@@ -34,8 +36,35 @@ class modalityData:
                 image_bytes = base_image["image"]
                 image_ext = base_image["ext"]
                 image_filename = f"page{page_num + 1}_img{img_index + 1}.{image_ext}"
-                images.append((image_filename, image_bytes))
+                images.append((image_filename, image_bytes, page_num + 1))
         return images
+    
+    def process_img_data(self):
+        # Extract images
+        images_content = self.extract_images()
+        print("\nExtracted Images:")
+
+        # Initialize a dictionary to hold image data
+        image_data = {"image_count": len(images_content)}
+
+        # Use enumerate to loop through images_content with an index
+        for count, (img_name, img_bytes, pg_num) in enumerate(images_content):
+            img_base64 = base64.b64encode(img_bytes).decode('utf-8')
+            img_node = {
+                "img_name": img_name,
+                "img_bytes": img_base64,
+                "img_size": len(img_bytes),
+                "page_num": pg_num
+            }
+            image_data[count] = img_node
+
+            # Print summary of the image
+            # print(f"Image {count}: {img_name}, Size: {img_node['img_size']} bytes, Page: {pg_num}")
+        # print(image_data)
+        # Convert the image_data dictionary to a JSON string
+        image_data_json = json.dumps(image_data, indent=4)
+        return image_data_json
+    
 
 # Path to the PDF file
 pdf_path = "report.pdf"
@@ -54,18 +83,8 @@ for table in tables_content:
         print(row)
     print("\n")
 
-# Extract images
-images_content = data_process.extract_images()
-print("\nExtracted Images:")
-image_data = {}
 
-image_data["image_count"] = len(images_content)
-count = 0
-for img_name, img_bytes in images_content:   
-    img_node = {}
-    print(f"Image: {img_name}, Size: {len(img_bytes)} bytes")
-    img_node["img_name"] = img_name
-    img_node["img_bytes"] = img_bytes
-    image_data[count]=img_node
-    count += 1
-print(image_data)
+img_data = data_process.process_img_data()
+
+# Print the JSON string
+print(img_data)
