@@ -18,12 +18,26 @@ class modalityData:
             text += page.get_text()
         return text
 
+    # def extract_tables(self):
+    #     tables = []
+    #     with pdfplumber.open(self.file_path) as pdf:
+    #         for page in pdf.pages:
+    #             tables.extend(page.extract_tables())
+    #     return tables
+    
     def extract_tables(self):
-        tables = []
+        tables = {}
         with pdfplumber.open(self.file_path) as pdf:
-            for page in pdf.pages:
-                tables.extend(page.extract_tables())
+            for page_num, page in enumerate(pdf.pages, start=1):
+                page_tables = page.extract_tables()
+                if page_tables:
+                    tables[page_num] = page_tables
         return tables
+
+    def extract_tables_to_json(self):
+        tables = self.extract_tables()
+        tables_json = json.dumps(tables, indent=4)
+        return tables_json
 
     def extract_images(self):
         doc = fitz.open(self.file_path)
@@ -76,15 +90,16 @@ print("Extracted Text:")
 print(text_content[:500])  # Print the first 500 characters of the text
 
 # Extract tables
-tables_content = data_process.extract_tables()
-print("\nExtracted Tables:")
-for table in tables_content:
-    for row in table:
-        print(row)
-    print("\n")
+tables_content = data_process.extract_tables_to_json()
+print(tables_content)
+# print("\nExtracted Tables:")
+# for table in tables_content:
+#     for row in table:
+#         print(row)
+#     print("\n")
 
 
 img_data = data_process.process_img_data()
 
 # Print the JSON string
-print(img_data)
+# print(img_data)
