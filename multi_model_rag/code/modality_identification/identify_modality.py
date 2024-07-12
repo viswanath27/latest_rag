@@ -57,5 +57,15 @@ for table in tables_content:
 # Extract images
 images_content = data_process.extract_images()
 print("\nExtracted Images:")
-for img_name, img_bytes in images_content:
+image_data = {}
+
+image_data["image_count"] = len(images_content)
+count = 0
+for img_name, img_bytes in images_content:   
+    img_node = {}
     print(f"Image: {img_name}, Size: {len(img_bytes)} bytes")
+    img_node["img_name"] = img_name
+    img_node["img_bytes"] = img_bytes
+    image_data[count]=img_node
+    count += 1
+print(image_data)
