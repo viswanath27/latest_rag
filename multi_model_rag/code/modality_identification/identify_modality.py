@@ -8,17 +8,24 @@ class tableData:
     def __init__(self, file_path):
         self.file_path = file_path
 
-    def extract_tables(self):
+    def get_tables(self):
+        # with pdfplumber.open(self.file_path) as pdf:
+        #     tables = {page_num: page.extract_tables() for page_num, page in enumerate(pdf.pages, start=1) if page.extract_tables()}
+        # return tables
         tables = {}
+        count = 1
         with pdfplumber.open(self.file_path) as pdf:
             for page_num, page in enumerate(pdf.pages, start=1):
-                page_tables = page.extract_tables()
-                if page_tables:
-                    tables[page_num] = page_tables
+                page_data={}
+                page_data["pg_num"] = page_num
+                page_data["tables"] = page.extract_tables()
+                tables[count] = page_data
+                count += 1
+        print(tables)
         return tables
 
     def extract_tables_to_json(self):
-        tables = self.extract_tables()
+        tables = self.get_tables()
         tables_json = json.dumps(tables, indent=4)
         return tables_json
     
@@ -87,24 +94,20 @@ class textData:
 pdf_path = "report.pdf"
 data_process = textData(pdf_path)
 # Extract text
-text_content = data_process.extract_text()
-print("Extracted Text:")
-print(text_content[:500])  # Print the first 500 characters of the text
+# text_content = data_process.extract_text()
+# print("Extracted Text:")
+# print(text_content[:500])  # Print the first 500 characters of the text
 
 
 # Extract tables
 processed_table_data = tableData(pdf_path)
 tables_content = processed_table_data.extract_tables_to_json()
 print(tables_content)
-# print("\nExtracted Tables:")
-# for table in tables_content:
-#     for row in table:
-#         print(row)
-#     print("\n")
 
-# Extract tables
-processed_img_data = imageData(pdf_path)
-img_data = processed_img_data.process_img_data()
+
+# Extract Images
+# processed_img_data = imageData(pdf_path)
+# img_data = processed_img_data.process_img_data()
 
 # Print the JSON string
-# print(img_data[0])
+# print(img_data)
