@@ -1,0 +1,1384 @@
+19:21:30,365 graphrag.config.read_dotenv INFO Loading pipeline .env file
+19:21:30,367 graphrag.index.cli INFO using default configuration: {
+    "llm": {
+        "api_key": "REDACTED, length 51",
+        "type": "openai_chat",
+        "model": "gpt-4-turbo-preview",
+        "max_tokens": 4000,
+        "request_timeout": 180.0,
+        "api_base": null,
+        "api_version": null,
+        "proxy": null,
+        "cognitive_services_endpoint": null,
+        "deployment_name": null,
+        "model_supports_json": true,
+        "tokens_per_minute": 0,
+        "requests_per_minute": 0,
+        "max_retries": 10,
+        "max_retry_wait": 10.0,
+        "sleep_on_rate_limit_recommendation": true,
+        "concurrent_requests": 25
+    },
+    "parallelization": {
+        "stagger": 0.3,
+        "num_threads": 50
+    },
+    "async_mode": "threaded",
+    "root_dir": "./ragtest",
+    "reporting": {
+        "type": "file",
+        "base_dir": "output/${timestamp}/reports",
+        "storage_account_blob_url": null
+    },
+    "storage": {
+        "type": "file",
+        "base_dir": "output/${timestamp}/artifacts",
+        "storage_account_blob_url": null
+    },
+    "cache": {
+        "type": "file",
+        "base_dir": "cache",
+        "storage_account_blob_url": null
+    },
+    "input": {
+        "type": "file",
+        "file_type": "text",
+        "base_dir": "input",
+        "storage_account_blob_url": null,
+        "encoding": "utf-8",
+        "file_pattern": ".*\\.txt$",
+        "file_filter": null,
+        "source_column": null,
+        "timestamp_column": null,
+        "timestamp_format": null,
+        "text_column": "text",
+        "title_column": null,
+        "document_attribute_columns": []
+    },
+    "embed_graph": {
+        "enabled": false,
+        "num_walks": 10,
+        "walk_length": 40,
+        "window_size": 2,
+        "iterations": 3,
+        "random_seed": 597832,
+        "strategy": null
+    },
+    "embeddings": {
+        "llm": {
+            "api_key": "REDACTED, length 51",
+            "type": "openai_embedding",
+            "model": "text-embedding-3-small",
+            "max_tokens": 4000,
+            "request_timeout": 180.0,
+            "api_base": null,
+            "api_version": null,
+            "proxy": null,
+            "cognitive_services_endpoint": null,
+            "deployment_name": null,
+            "model_supports_json": null,
+            "tokens_per_minute": 0,
+            "requests_per_minute": 0,
+            "max_retries": 10,
+            "max_retry_wait": 10.0,
+            "sleep_on_rate_limit_recommendation": true,
+            "concurrent_requests": 25
+        },
+        "parallelization": {
+            "stagger": 0.3,
+            "num_threads": 50
+        },
+        "async_mode": "threaded",
+        "batch_size": 16,
+        "batch_max_tokens": 8191,
+        "target": "required",
+        "skip": [],
+        "vector_store": null,
+        "strategy": null
+    },
+    "chunks": {
+        "size": 300,
+        "overlap": 100,
+        "group_by_columns": [
+            "id"
+        ],
+        "strategy": null
+    },
+    "snapshots": {
+        "graphml": false,
+        "raw_entities": false,
+        "top_level_nodes": false
+    },
+    "entity_extraction": {
+        "llm": {
+            "api_key": "REDACTED, length 51",
+            "type": "openai_chat",
+            "model": "gpt-4-turbo-preview",
+            "max_tokens": 4000,
+            "request_timeout": 180.0,
+            "api_base": null,
+            "api_version": null,
+            "proxy": null,
+            "cognitive_services_endpoint": null,
+            "deployment_name": null,
+            "model_supports_json": true,
+            "tokens_per_minute": 0,
+            "requests_per_minute": 0,
+            "max_retries": 10,
+            "max_retry_wait": 10.0,
+            "sleep_on_rate_limit_recommendation": true,
+            "concurrent_requests": 25
+        },
+        "parallelization": {
+            "stagger": 0.3,
+            "num_threads": 50
+        },
+        "async_mode": "threaded",
+        "prompt": "prompts/entity_extraction.txt",
+        "entity_types": [
+            "organization",
+            "person",
+            "geo",
+            "event"
+        ],
+        "max_gleanings": 0,
+        "strategy": null
+    },
+    "summarize_descriptions": {
+        "llm": {
+            "api_key": "REDACTED, length 51",
+            "type": "openai_chat",
+            "model": "gpt-4-turbo-preview",
+            "max_tokens": 4000,
+            "request_timeout": 180.0,
+            "api_base": null,
+            "api_version": null,
+            "proxy": null,
+            "cognitive_services_endpoint": null,
+            "deployment_name": null,
+            "model_supports_json": true,
+            "tokens_per_minute": 0,
+            "requests_per_minute": 0,
+            "max_retries": 10,
+            "max_retry_wait": 10.0,
+            "sleep_on_rate_limit_recommendation": true,
+            "concurrent_requests": 25
+        },
+        "parallelization": {
+            "stagger": 0.3,
+            "num_threads": 50
+        },
+        "async_mode": "threaded",
+        "prompt": "prompts/summarize_descriptions.txt",
+        "max_length": 500,
+        "strategy": null
+    },
+    "community_reports": {
+        "llm": {
+            "api_key": "REDACTED, length 51",
+            "type": "openai_chat",
+            "model": "gpt-4-turbo-preview",
+            "max_tokens": 4000,
+            "request_timeout": 180.0,
+            "api_base": null,
+            "api_version": null,
+            "proxy": null,
+            "cognitive_services_endpoint": null,
+            "deployment_name": null,
+            "model_supports_json": true,
+            "tokens_per_minute": 0,
+            "requests_per_minute": 0,
+            "max_retries": 10,
+            "max_retry_wait": 10.0,
+            "sleep_on_rate_limit_recommendation": true,
+            "concurrent_requests": 25
+        },
+        "parallelization": {
+            "stagger": 0.3,
+            "num_threads": 50
+        },
+        "async_mode": "threaded",
+        "prompt": null,
+        "max_length": 2000,
+        "max_input_length": 8000,
+        "strategy": null
+    },
+    "claim_extraction": {
+        "llm": {
+            "api_key": "REDACTED, length 51",
+            "type": "openai_chat",
+            "model": "gpt-4-turbo-preview",
+            "max_tokens": 4000,
+            "request_timeout": 180.0,
+            "api_base": null,
+            "api_version": null,
+            "proxy": null,
+            "cognitive_services_endpoint": null,
+            "deployment_name": null,
+            "model_supports_json": true,
+            "tokens_per_minute": 0,
+            "requests_per_minute": 0,
+            "max_retries": 10,
+            "max_retry_wait": 10.0,
+            "sleep_on_rate_limit_recommendation": true,
+            "concurrent_requests": 25
+        },
+        "parallelization": {
+            "stagger": 0.3,
+            "num_threads": 50
+        },
+        "async_mode": "threaded",
+        "enabled": false,
+        "prompt": "prompts/claim_extraction.txt",
+        "description": "Any claims or facts that could be relevant to information discovery.",
+        "max_gleanings": 0,
+        "strategy": null
+    },
+    "cluster_graph": {
+        "max_cluster_size": 10,
+        "strategy": null
+    },
+    "umap": {
+        "enabled": false
+    },
+    "local_search": {
+        "text_unit_prop": 0.5,
+        "community_prop": 0.1,
+        "conversation_history_max_turns": 5,
+        "top_k_entities": 10,
+        "top_k_relationships": 10,
+        "max_tokens": 12000,
+        "llm_max_tokens": 2000
+    },
+    "global_search": {
+        "max_tokens": 12000,
+        "data_max_tokens": 12000,
+        "map_max_tokens": 1000,
+        "reduce_max_tokens": 2000,
+        "concurrency": 32
+    },
+    "encoding_model": "cl100k_base",
+    "skip_workflows": []
+}
+19:21:30,368 graphrag.index.create_pipeline_config INFO skipping workflows 
+19:21:30,757 graphrag.index.run INFO Running pipeline
+19:21:30,757 graphrag.index.storage.file_pipeline_storage INFO Creating file storage at ragtest/output/20240713-192130/artifacts
+19:21:30,758 graphrag.index.input.load_input INFO loading input from root_dir=input
+19:21:30,758 graphrag.index.input.load_input INFO using file storage for input
+19:21:30,761 graphrag.index.storage.file_pipeline_storage INFO search ragtest/input for files matching .*\.txt$
+19:21:30,761 graphrag.index.input.text INFO found text files from input, found [('book.txt', {})]
+19:21:30,768 graphrag.index.workflows.load INFO Workflow Run Order: ['create_base_text_units', 'create_base_extracted_entities', 'create_summarized_entities', 'create_base_entity_graph', 'create_final_entities', 'create_final_nodes', 'create_final_communities', 'join_text_units_to_entity_ids', 'create_final_relationships', 'join_text_units_to_relationship_ids', 'create_final_community_reports', 'create_final_text_units', 'create_base_documents', 'create_final_documents']
+19:21:30,768 graphrag.index.run INFO Final # of rows loaded: 1
+19:21:30,856 graphrag.index.run INFO Running workflow: create_base_text_units...
+19:21:30,856 graphrag.index.run INFO dependencies for create_base_text_units: []
+19:21:30,858 datashaper.workflow.workflow INFO executing verb orderby
+19:21:30,861 datashaper.workflow.workflow INFO executing verb zip
+19:21:30,862 datashaper.workflow.workflow INFO executing verb aggregate_override
+19:21:30,866 datashaper.workflow.workflow INFO executing verb chunk
+19:21:34,179 datashaper.workflow.workflow INFO executing verb select
+19:21:34,188 datashaper.workflow.workflow INFO executing verb unroll
+19:21:34,194 datashaper.workflow.workflow INFO executing verb rename
+19:21:34,196 datashaper.workflow.workflow INFO executing verb genid
+19:21:34,201 datashaper.workflow.workflow INFO executing verb unzip
+19:21:34,205 datashaper.workflow.workflow INFO executing verb copy
+19:21:34,208 datashaper.workflow.workflow INFO executing verb filter
+19:21:34,217 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_base_text_units.parquet
+19:21:34,373 graphrag.index.run INFO Running workflow: create_base_extracted_entities...
+19:21:34,373 graphrag.index.run INFO dependencies for create_base_extracted_entities: ['create_base_text_units']
+19:21:34,373 graphrag.index.run INFO read table from storage: create_base_text_units.parquet
+19:21:34,391 datashaper.workflow.workflow INFO executing verb entity_extract
+19:21:34,396 graphrag.llm.openai.create_openai_client INFO Creating OpenAI client base_url=None
+19:21:34,409 graphrag.index.llm.load_llm INFO create TPM/RPM limiter for gpt-4-turbo-preview: TPM=0, RPM=0
+19:21:34,409 graphrag.index.llm.load_llm INFO create concurrency limiter for gpt-4-turbo-preview: 25
+19:21:38,58 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:38,68 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 3.629000000000815. input_tokens=2233, output_tokens=57
+19:21:38,708 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:38,712 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 4.274000000004889. input_tokens=2235, output_tokens=75
+19:21:38,999 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:39,3 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 4.570999999996275. input_tokens=2234, output_tokens=90
+19:21:40,421 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:40,425 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.985000000000582. input_tokens=2234, output_tokens=147
+19:21:40,595 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:40,600 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 6.143000000010943. input_tokens=2234, output_tokens=141
+19:21:40,938 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:40,941 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 6.49199999999837. input_tokens=2235, output_tokens=143
+19:21:41,416 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:41,420 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 6.974000000001979. input_tokens=2234, output_tokens=163
+19:21:41,421 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:41,429 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 6.997999999992317. input_tokens=2232, output_tokens=163
+19:21:41,479 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:41,480 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 7.048000000009779. input_tokens=2234, output_tokens=165
+19:21:44,614 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:44,622 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.182999999989988. input_tokens=2234, output_tokens=262
+19:21:45,861 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:45,864 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 11.41600000001199. input_tokens=2234, output_tokens=334
+19:21:45,941 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:45,944 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 7.873999999996158. input_tokens=2234, output_tokens=223
+19:21:46,575 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:46,579 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 12.14900000000489. input_tokens=2234, output_tokens=335
+19:21:47,165 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:47,168 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 2.5449999999982538. input_tokens=2234, output_tokens=46
+19:21:47,613 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:47,616 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 13.172000000005937. input_tokens=2234, output_tokens=282
+19:21:47,829 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:47,833 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 6.403000000005704. input_tokens=2234, output_tokens=130
+19:21:47,890 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:47,893 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 13.456999999994878. input_tokens=2234, output_tokens=369
+19:21:47,943 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:47,948 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 6.466999999989639. input_tokens=2233, output_tokens=131
+19:21:48,171 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:48,181 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 13.720999999990454. input_tokens=2234, output_tokens=353
+19:21:48,311 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:48,314 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 9.309999999997672. input_tokens=2234, output_tokens=255
+19:21:48,395 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:48,398 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 13.945000000006985. input_tokens=2233, output_tokens=386
+19:21:48,448 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:48,450 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 14.005000000004657. input_tokens=2234, output_tokens=274
+19:21:48,632 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:48,635 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 9.919999999998254. input_tokens=2233, output_tokens=277
+19:21:49,195 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:49,197 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 14.754000000000815. input_tokens=2233, output_tokens=477
+19:21:49,718 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:49,722 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.779999999998836. input_tokens=2234, output_tokens=241
+19:21:51,334 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:51,338 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 16.887000000002445. input_tokens=2233, output_tokens=480
+19:21:51,683 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:51,686 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.264000000010128. input_tokens=2233, output_tokens=225
+19:21:52,123 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:52,127 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.5460000000020955. input_tokens=2233, output_tokens=125
+19:21:52,223 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:52,226 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 6.361000000004424. input_tokens=2234, output_tokens=181
+19:21:52,893 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:52,896 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 4.711999999999534. input_tokens=2234, output_tokens=122
+19:21:53,17 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:53,21 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 4.620999999999185. input_tokens=2234, output_tokens=135
+19:21:53,298 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:53,300 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.406999999991967. input_tokens=2234, output_tokens=143
+19:21:53,380 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:53,383 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 12.779999999998836. input_tokens=2232, output_tokens=372
+19:21:53,436 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:53,440 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 13.013000000006286. input_tokens=2234, output_tokens=374
+19:21:53,654 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:53,656 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.822000000000116. input_tokens=2234, output_tokens=159
+19:21:53,894 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:53,898 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 19.478000000002794. input_tokens=2232, output_tokens=561
+19:21:53,961 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:53,964 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 6.010999999998603. input_tokens=2234, output_tokens=142
+19:21:54,266 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:54,268 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 7.097999999998137. input_tokens=2234, output_tokens=224
+19:21:54,437 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:54,442 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 19.987999999997555. input_tokens=2234, output_tokens=574
+19:21:54,568 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:54,571 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 6.256000000008498. input_tokens=2234, output_tokens=142
+19:21:54,906 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:54,910 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 7.29299999999057. input_tokens=2234, output_tokens=204
+19:21:55,324 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:55,327 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 9.381999999997788. input_tokens=2234, output_tokens=227
+19:21:55,480 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:55,483 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 6.846999999994296. input_tokens=2234, output_tokens=133
+19:21:56,432 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:56,437 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 22.011000000013155. input_tokens=2234, output_tokens=644
+19:21:57,481 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:57,486 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 7.760999999998603. input_tokens=2234, output_tokens=203
+19:21:57,614 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:57,618 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 4.595999999990454. input_tokens=2233, output_tokens=128
+19:21:57,829 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:57,832 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 4.176000000006752. input_tokens=2234, output_tokens=96
+19:21:57,842 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:57,845 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 4.4610000000102445. input_tokens=2234, output_tokens=132
+19:21:58,610 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:58,613 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.169999999998254. input_tokens=2233, output_tokens=146
+19:21:58,742 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:58,745 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 7.404999999998836. input_tokens=2234, output_tokens=212
+19:21:58,769 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:58,771 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 4.804999999993015. input_tokens=2234, output_tokens=123
+19:21:58,827 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:58,829 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.377999999996973. input_tokens=2234, output_tokens=273
+19:21:59,329 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:21:59,332 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.062999999994645. input_tokens=2234, output_tokens=144
+19:22:00,470 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:00,476 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 26.046999999991385. input_tokens=2235, output_tokens=752
+19:22:00,682 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:00,686 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.55800000000454. input_tokens=2234, output_tokens=213
+19:22:01,62 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:01,66 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.16799999999057. input_tokens=2234, output_tokens=204
+19:22:01,706 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:01,711 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 27.286999999996624. input_tokens=2233, output_tokens=677
+19:22:02,405 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:02,408 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.180999999996857. input_tokens=2234, output_tokens=350
+19:22:02,500 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:02,503 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 6.065000000002328. input_tokens=2234, output_tokens=141
+19:22:03,155 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:03,159 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 9.857000000003609. input_tokens=2234, output_tokens=238
+19:22:03,297 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:03,300 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.856999999989057. input_tokens=2234, output_tokens=237
+19:22:03,458 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:03,462 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.889999999999418. input_tokens=2234, output_tokens=236
+19:22:04,280 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:04,283 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.798999999999069. input_tokens=2234, output_tokens=226
+19:22:04,534 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:04,535 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 6.701999999990221. input_tokens=2234, output_tokens=184
+19:22:04,581 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:04,584 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 15.385999999998603. input_tokens=2234, output_tokens=417
+19:22:05,697 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:05,701 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.373000000006869. input_tokens=2234, output_tokens=319
+19:22:06,35 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:06,38 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 12.138000000006286. input_tokens=2234, output_tokens=328
+19:22:06,59 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:06,62 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 14.37400000001071. input_tokens=2235, output_tokens=401
+19:22:06,210 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:06,214 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 7.598999999987427. input_tokens=2233, output_tokens=235
+19:22:07,218 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:07,223 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 12.311000000001513. input_tokens=2234, output_tokens=315
+19:22:07,362 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:07,366 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 9.520000000004075. input_tokens=2234, output_tokens=258
+19:22:07,794 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:07,798 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 9.0509999999922. input_tokens=2233, output_tokens=225
+19:22:08,603 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:08,605 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 4.0200000000040745. input_tokens=2234, output_tokens=122
+19:22:08,833 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:08,837 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.005999999993946. input_tokens=2234, output_tokens=306
+19:22:10,97 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:10,101 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.81600000000617. input_tokens=2234, output_tokens=146
+19:22:10,162 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:10,165 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 12.544999999998254. input_tokens=2234, output_tokens=319
+19:22:10,689 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:10,692 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.979999999995925. input_tokens=2234, output_tokens=251
+19:22:10,893 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:10,898 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 36.470000000001164. input_tokens=2233, output_tokens=1069
+19:22:10,930 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:10,932 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.230000000010477. input_tokens=2234, output_tokens=134
+19:22:11,554 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:11,558 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 7.021999999997206. input_tokens=2234, output_tokens=193
+19:22:12,461 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:12,464 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 14.97599999999511. input_tokens=2234, output_tokens=385
+19:22:12,609 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:12,613 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 13.84100000000035. input_tokens=2233, output_tokens=382
+19:22:12,713 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:12,717 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.307999999989988. input_tokens=2234, output_tokens=281
+19:22:13,405 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:13,409 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 14.07499999999709. input_tokens=2234, output_tokens=393
+19:22:13,584 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:13,587 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 7.521999999997206. input_tokens=2234, output_tokens=205
+19:22:14,833 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:14,837 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.798000000009779. input_tokens=2233, output_tokens=243
+19:22:15,41 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:15,50 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 4.940999999991618. input_tokens=2234, output_tokens=112
+19:22:15,51 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:15,62 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 11.594000000011874. input_tokens=2234, output_tokens=335
+19:22:15,412 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:15,416 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 12.115000000005239. input_tokens=2234, output_tokens=289
+19:22:15,437 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:15,438 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.271999999997206. input_tokens=2233, output_tokens=139
+19:22:15,501 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:15,504 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 4.811000000001513. input_tokens=2234, output_tokens=118
+19:22:15,697 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:15,704 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 13.198999999993248. input_tokens=2234, output_tokens=318
+19:22:15,744 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:15,747 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 15.269999999989523. input_tokens=2234, output_tokens=374
+19:22:15,815 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:15,819 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.594999999986612. input_tokens=2234, output_tokens=239
+19:22:16,341 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:16,345 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.130000000004657. input_tokens=2234, output_tokens=232
+19:22:16,449 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:16,453 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.653999999994994. input_tokens=2234, output_tokens=229
+19:22:16,487 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:16,490 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 7.884999999994761. input_tokens=2234, output_tokens=132
+19:22:16,964 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:16,968 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 6.035999999992782. input_tokens=2234, output_tokens=148
+19:22:17,254 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:17,256 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 14.096000000005006. input_tokens=2234, output_tokens=416
+19:22:17,654 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:17,659 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.290999999997439. input_tokens=2234, output_tokens=259
+19:22:18,200 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:18,203 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 4.615000000005239. input_tokens=2234, output_tokens=104
+19:22:18,564 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:18,568 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 9.729000000006636. input_tokens=2233, output_tokens=253
+19:22:20,43 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:20,47 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 6.637000000002445. input_tokens=2234, output_tokens=144
+19:22:20,375 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:20,386 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 19.698000000003958. input_tokens=2234, output_tokens=532
+19:22:20,657 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:20,660 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 9.759000000005472. input_tokens=2234, output_tokens=220
+19:22:21,13 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:21,17 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.402000000001863. input_tokens=2234, output_tokens=224
+19:22:21,225 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:21,230 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 6.165999999997439. input_tokens=2233, output_tokens=141
+19:22:22,511 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:22,516 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 21.447000000000116. input_tokens=2234, output_tokens=553
+19:22:22,643 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:22,646 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 7.8070000000006985. input_tokens=2234, output_tokens=187
+19:22:23,637 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:23,639 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 12.078999999997905. input_tokens=2234, output_tokens=279
+19:22:24,187 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:24,190 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.75. input_tokens=2234, output_tokens=212
+19:22:24,492 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:24,496 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 12.031000000002678. input_tokens=2233, output_tokens=295
+19:22:24,623 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:24,627 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 11.906999999991967. input_tokens=2234, output_tokens=333
+19:22:26,524 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:26,529 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.779999999998836. input_tokens=2234, output_tokens=318
+19:22:27,669 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:27,673 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 12.620999999999185. input_tokens=2234, output_tokens=354
+19:22:27,729 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:27,733 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 12.313999999998487. input_tokens=2234, output_tokens=290
+19:22:28,771 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:28,775 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 12.427999999999884. input_tokens=2233, output_tokens=376
+19:22:29,369 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:29,372 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 11.16799999999057. input_tokens=2234, output_tokens=284
+19:22:29,727 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:29,731 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.710000000006403. input_tokens=2234, output_tokens=206
+19:22:29,920 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:29,923 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 11.354000000006636. input_tokens=2234, output_tokens=298
+19:22:30,989 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:30,996 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 15.287999999985914. input_tokens=2235, output_tokens=429
+19:22:31,238 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:31,242 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 15.736000000004424. input_tokens=2234, output_tokens=455
+19:22:31,313 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:31,317 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 14.346999999994296. input_tokens=2234, output_tokens=406
+19:22:31,318 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:31,326 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.677999999999884. input_tokens=2234, output_tokens=205
+19:22:31,642 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:31,645 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 14.387999999991735. input_tokens=2235, output_tokens=398
+19:22:31,819 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:31,822 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 15.331000000005588. input_tokens=2234, output_tokens=450
+19:22:31,988 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:31,993 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 16.172000000005937. input_tokens=2233, output_tokens=447
+19:22:32,25 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:32,29 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 14.36699999999837. input_tokens=2235, output_tokens=382
+19:22:32,940 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:32,944 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 11.712999999988824. input_tokens=2233, output_tokens=333
+19:22:33,233 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:33,239 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 9.597999999998137. input_tokens=2234, output_tokens=276
+19:22:33,471 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:33,476 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 17.020999999993364. input_tokens=2234, output_tokens=452
+19:22:34,748 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:34,752 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.220999999990454. input_tokens=2234, output_tokens=239
+19:22:35,267 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:35,271 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.64199999999255. input_tokens=2234, output_tokens=289
+19:22:35,907 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:35,912 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 11.720000000001164. input_tokens=2234, output_tokens=342
+19:22:36,42 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:36,47 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 15.660000000003492. input_tokens=2234, output_tokens=455
+19:22:36,255 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:36,259 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 15.597999999998137. input_tokens=2234, output_tokens=387
+19:22:37,284 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:37,289 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 9.554000000003725. input_tokens=2233, output_tokens=252
+19:22:38,127 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:38,131 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 6.30800000000454. input_tokens=2234, output_tokens=166
+19:22:38,212 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:38,216 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 18.16700000000128. input_tokens=2233, output_tokens=451
+19:22:38,406 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:38,409 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.73300000000745. input_tokens=2234, output_tokens=295
+19:22:40,578 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:40,583 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 11.804999999993015. input_tokens=2235, output_tokens=343
+19:22:41,245 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:41,248 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.975999999995111. input_tokens=2234, output_tokens=142
+19:22:41,283 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:41,286 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.372000000003027. input_tokens=2233, output_tokens=137
+19:22:41,467 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:41,471 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.151000000012573. input_tokens=2234, output_tokens=333
+19:22:41,595 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:41,599 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 12.22500000000582. input_tokens=2234, output_tokens=362
+19:22:42,955 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:42,958 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 11.630000000004657. input_tokens=2234, output_tokens=350
+19:22:43,388 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:43,392 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.444999999992433. input_tokens=2234, output_tokens=272
+19:22:43,786 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:43,791 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 7.74199999999837. input_tokens=2233, output_tokens=228
+19:22:43,920 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:43,924 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 14.192000000010012. input_tokens=2234, output_tokens=358
+19:22:43,975 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:43,978 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.50099999998929. input_tokens=2234, output_tokens=338
+19:22:44,71 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:44,76 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 14.152000000001863. input_tokens=2234, output_tokens=445
+19:22:45,314 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:45,317 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 7.184999999997672. input_tokens=2234, output_tokens=129
+19:22:45,775 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:45,780 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 21.279999999998836. input_tokens=2234, output_tokens=521
+19:22:46,175 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:46,180 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 11.426999999996042. input_tokens=2234, output_tokens=298
+19:22:46,580 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:46,584 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.173999999999069. input_tokens=2234, output_tokens=215
+19:22:46,877 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:46,881 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 14.851999999998952. input_tokens=2234, output_tokens=432
+19:22:47,789 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:47,794 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 16.796000000002095. input_tokens=2232, output_tokens=502
+19:22:47,845 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:47,849 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 16.202000000004773. input_tokens=2234, output_tokens=436
+19:22:48,125 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:48,129 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 14.889000000010128. input_tokens=2234, output_tokens=369
+19:22:48,782 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:48,787 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 12.525999999998021. input_tokens=2234, output_tokens=326
+19:22:48,893 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:48,897 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 7.297000000005937. input_tokens=2234, output_tokens=155
+19:22:49,99 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:49,103 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.518000000010943. input_tokens=2234, output_tokens=234
+19:22:49,589 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:49,593 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.119999999995343. input_tokens=2233, output_tokens=235
+19:22:50,407 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:50,410 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 6.484000000011292. input_tokens=2234, output_tokens=139
+19:22:50,490 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:50,494 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 6.701999999990221. input_tokens=2235, output_tokens=144
+19:22:50,608 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:50,611 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.292000000001281. input_tokens=2234, output_tokens=128
+19:22:52,14 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:52,18 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 7.94100000000617. input_tokens=2233, output_tokens=207
+19:22:52,803 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:52,806 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.922999999995227. input_tokens=2234, output_tokens=142
+19:22:53,310 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:53,314 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 15.096000000005006. input_tokens=2234, output_tokens=222
+19:22:53,323 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:53,325 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 9.930999999996857. input_tokens=2234, output_tokens=221
+19:22:53,714 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:53,719 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.75800000000163. input_tokens=2234, output_tokens=292
+19:22:54,554 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:54,556 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 13.307000000000698. input_tokens=2234, output_tokens=340
+19:22:54,822 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:54,829 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.849000000001979. input_tokens=2234, output_tokens=267
+19:22:55,122 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:55,127 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 23.131999999997788. input_tokens=2234, output_tokens=325
+19:22:55,344 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:55,348 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 9.567000000010012. input_tokens=2234, output_tokens=256
+19:22:55,750 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:55,753 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 33.23500000000058. input_tokens=2234, output_tokens=628
+19:22:56,394 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:56,398 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.601999999998952. input_tokens=2234, output_tokens=230
+19:22:56,979 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:56,984 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.801999999996042. input_tokens=2233, output_tokens=297
+19:22:57,292 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:57,295 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 9.163000000000466. input_tokens=2234, output_tokens=276
+19:22:57,445 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:57,448 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.549999999988358. input_tokens=2234, output_tokens=226
+19:22:57,574 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:57,578 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 26.33400000000256. input_tokens=2234, output_tokens=428
+19:22:57,752 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:57,756 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 16.46799999999348. input_tokens=2234, output_tokens=482
+19:22:58,387 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:58,389 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 21.09900000000198. input_tokens=2232, output_tokens=321
+19:22:58,547 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:58,550 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.743000000002212. input_tokens=2234, output_tokens=148
+19:22:59,96 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:22:59,104 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 12.51699999999255. input_tokens=2233, output_tokens=350
+19:23:00,422 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:00,427 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.831999999994878. input_tokens=2234, output_tokens=281
+19:23:00,687 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:00,691 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 12.839999999996508. input_tokens=2234, output_tokens=366
+19:23:01,436 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:01,441 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.827999999994063. input_tokens=2234, output_tokens=308
+19:23:01,789 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:01,793 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.394000000000233. input_tokens=2234, output_tokens=131
+19:23:01,884 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:01,888 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 9.868000000002212. input_tokens=2234, output_tokens=242
+19:23:01,951 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:01,954 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 12.85000000000582. input_tokens=2234, output_tokens=246
+19:23:02,43 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:02,52 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 7.221999999994296. input_tokens=2233, output_tokens=217
+19:23:02,120 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:02,121 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.806000000011409. input_tokens=2234, output_tokens=227
+19:23:02,819 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:02,823 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.526000000012573. input_tokens=2233, output_tokens=141
+19:23:03,310 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:03,316 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 14.52699999998731. input_tokens=2234, output_tokens=381
+19:23:03,783 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:03,787 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.395999999993364. input_tokens=2235, output_tokens=131
+19:23:05,211 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:05,216 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.657999999995809. input_tokens=2233, output_tokens=308
+19:23:05,443 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:05,446 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 12.119999999995343. input_tokens=2233, output_tokens=335
+19:23:05,455 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:05,457 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 7.877999999996973. input_tokens=2234, output_tokens=222
+19:23:05,755 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:05,758 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.629000000000815. input_tokens=2234, output_tokens=199
+19:23:05,969 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:05,973 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.986999999993714. input_tokens=2234, output_tokens=251
+19:23:06,175 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:06,180 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 15.769000000000233. input_tokens=2234, output_tokens=328
+19:23:06,307 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:06,311 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 12.589999999996508. input_tokens=2234, output_tokens=336
+19:23:06,834 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:06,839 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 4.013999999995576. input_tokens=2234, output_tokens=89
+19:23:06,978 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:06,983 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.026999999987311. input_tokens=2233, output_tokens=119
+19:23:07,69 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:07,74 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.521999999997206. input_tokens=2233, output_tokens=242
+19:23:07,95 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:07,98 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 4.9760000000096625. input_tokens=2234, output_tokens=137
+19:23:07,402 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:07,407 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.353000000002794. input_tokens=2232, output_tokens=135
+19:23:07,512 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:07,516 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 6.823000000003958. input_tokens=2235, output_tokens=145
+19:23:07,594 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:07,598 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 9.84100000000035. input_tokens=2235, output_tokens=216
+19:23:08,108 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:08,112 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 6.669999999998254. input_tokens=2234, output_tokens=127
+19:23:08,670 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:08,672 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 4.88399999999092. input_tokens=2234, output_tokens=119
+19:23:08,774 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:08,779 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 13.428999999989173. input_tokens=2233, output_tokens=361
+19:23:08,975 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:08,978 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 13.224000000001979. input_tokens=2234, output_tokens=356
+19:23:09,148 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:09,152 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.835000000006403. input_tokens=2233, output_tokens=141
+19:23:09,508 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:09,513 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 9.08299999999872. input_tokens=2234, output_tokens=266
+19:23:09,588 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:09,593 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 7.797999999995227. input_tokens=2234, output_tokens=199
+19:23:09,761 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:09,766 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 19.270000000004075. input_tokens=2234, output_tokens=427
+19:23:09,783 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:09,786 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 12.336999999999534. input_tokens=2234, output_tokens=319
+19:23:10,637 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:10,643 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.426000000006752. input_tokens=2232, output_tokens=135
+19:23:11,8 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:11,11 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:11,14 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.555000000007567. input_tokens=2234, output_tokens=150
+19:23:11,17 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 5.04299999999057. input_tokens=2234, output_tokens=122
+19:23:11,207 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:11,211 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 12.104999999995925. input_tokens=2234, output_tokens=322
+19:23:11,492 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:11,497 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 9.607999999992899. input_tokens=2233, output_tokens=247
+19:23:12,420 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:12,427 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 6.244999999995343. input_tokens=2234, output_tokens=155
+19:23:13,514 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:13,522 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 7.762000000002445. input_tokens=2232, output_tokens=213
+19:23:13,834 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:13,839 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 8.390999999988708. input_tokens=2234, output_tokens=228
+19:23:14,229 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:14,234 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 7.25. input_tokens=2234, output_tokens=216
+19:23:16,580 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:16,587 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 9.510999999998603. input_tokens=2087, output_tokens=235
+19:23:16,988 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:16,992 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 10.152000000001863. input_tokens=2233, output_tokens=286
+19:23:22,176 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:22,185 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 15.870999999999185. input_tokens=2233, output_tokens=389
+19:23:22,211 datashaper.workflow.workflow INFO executing verb merge_graphs
+19:23:22,263 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_base_extracted_entities.parquet
+19:23:22,403 graphrag.index.run INFO Running workflow: create_summarized_entities...
+19:23:22,403 graphrag.index.run INFO dependencies for create_summarized_entities: ['create_base_extracted_entities']
+19:23:22,403 graphrag.index.run INFO read table from storage: create_base_extracted_entities.parquet
+19:23:22,410 datashaper.workflow.workflow INFO executing verb summarize_descriptions
+19:23:25,226 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:25,230 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.7949999999982538. input_tokens=167, output_tokens=52
+19:23:25,249 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:25,252 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.8179999999993015. input_tokens=162, output_tokens=49
+19:23:25,587 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:25,590 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.153999999994994. input_tokens=182, output_tokens=76
+19:23:25,861 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:25,863 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.4140000000043074. input_tokens=173, output_tokens=69
+19:23:26,114 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:26,118 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.6829999999899883. input_tokens=168, output_tokens=82
+19:23:26,281 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:26,286 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.845999999990454. input_tokens=184, output_tokens=84
+19:23:26,714 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:26,717 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.283999999999651. input_tokens=210, output_tokens=99
+19:23:26,749 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:26,751 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.313999999998487. input_tokens=189, output_tokens=84
+19:23:27,16 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:27,20 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.565000000002328. input_tokens=201, output_tokens=107
+19:23:27,51 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:27,54 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.600999999995111. input_tokens=251, output_tokens=109
+19:23:27,162 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:27,166 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.720000000001164. input_tokens=215, output_tokens=112
+19:23:27,199 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:27,201 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.755000000004657. input_tokens=247, output_tokens=98
+19:23:28,139 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:28,142 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.698999999993248. input_tokens=288, output_tokens=132
+19:23:28,200 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:28,208 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.7519999999931315. input_tokens=206, output_tokens=138
+19:23:28,818 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:28,822 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.375. input_tokens=234, output_tokens=159
+19:23:28,875 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:28,878 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.5910000000003492. input_tokens=181, output_tokens=51
+19:23:29,77 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:29,81 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.629999999990105. input_tokens=214, output_tokens=155
+19:23:29,234 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:29,236 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.11699999999837. input_tokens=178, output_tokens=68
+19:23:29,348 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:29,352 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.63300000000163. input_tokens=178, output_tokens=53
+19:23:29,530 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:29,533 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 7.093000000008033. input_tokens=218, output_tokens=116
+19:23:29,999 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:30,2 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 7.546999999991385. input_tokens=287, output_tokens=184
+19:23:30,55 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:30,60 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 7.611000000004424. input_tokens=308, output_tokens=202
+19:23:30,401 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:30,405 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.3500000000058208. input_tokens=196, output_tokens=76
+19:23:30,780 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:30,782 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.55000000000291. input_tokens=221, output_tokens=129
+19:23:31,924 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:31,927 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.176000000006752. input_tokens=211, output_tokens=124
+19:23:32,364 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:32,367 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 7.114000000001397. input_tokens=356, output_tokens=183
+19:23:32,453 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:32,454 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 10.013000000006286. input_tokens=303, output_tokens=187
+19:23:32,800 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:32,804 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.56600000000617. input_tokens=186, output_tokens=92
+19:23:33,469 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:33,473 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.4109999999927823. input_tokens=179, output_tokens=78
+19:23:33,474 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:33,483 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 11.038000000000466. input_tokens=413, output_tokens=275
+19:23:33,515 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:33,517 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.6379999999917345. input_tokens=187, output_tokens=114
+19:23:33,620 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:33,623 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 11.190999999991618. input_tokens=393, output_tokens=257
+19:23:33,703 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:33,706 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.922999999995227. input_tokens=182, output_tokens=61
+19:23:34,281 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:34,285 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.75. input_tokens=194, output_tokens=112
+19:23:34,504 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:34,507 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.100000000005821. input_tokens=178, output_tokens=96
+19:23:34,883 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:34,888 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.88399999999092. input_tokens=179, output_tokens=85
+19:23:35,209 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:35,213 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 8.192999999999302. input_tokens=403, output_tokens=244
+19:23:35,306 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:35,310 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 9.445999999996275. input_tokens=363, output_tokens=251
+19:23:35,311 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:35,327 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 7.18399999999383. input_tokens=264, output_tokens=179
+19:23:35,454 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:35,458 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 8.255999999993946. input_tokens=296, output_tokens=220
+19:23:35,638 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:35,642 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 13.210999999995693. input_tokens=735, output_tokens=355
+19:23:35,857 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:35,862 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.777999999991152. input_tokens=239, output_tokens=207
+19:23:35,921 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:35,926 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 8.757999999987078. input_tokens=288, output_tokens=224
+19:23:36,712 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:36,715 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 7.361000000004424. input_tokens=218, output_tokens=150
+19:23:37,401 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:37,406 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 14.953000000008615. input_tokens=651, output_tokens=400
+19:23:37,417 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:37,428 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.1000000000058208. input_tokens=170, output_tokens=43
+19:23:37,593 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:37,596 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.078000000008615. input_tokens=192, output_tokens=94
+19:23:37,606 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:37,609 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 15.169999999998254. input_tokens=585, output_tokens=423
+19:23:37,741 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:37,744 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.528999999994994. input_tokens=179, output_tokens=53
+19:23:37,915 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:37,919 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.6309999999939464. input_tokens=183, output_tokens=79
+19:23:38,105 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:38,107 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.301999999996042. input_tokens=213, output_tokens=140
+19:23:38,174 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:38,176 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.2479999999923166. input_tokens=149, output_tokens=42
+19:23:38,452 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:38,455 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.592000000004191. input_tokens=142, output_tokens=58
+19:23:38,593 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:38,596 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.1349999999947613. input_tokens=171, output_tokens=65
+19:23:38,638 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:38,641 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.7519999999931315. input_tokens=177, output_tokens=89
+19:23:38,969 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:38,973 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.264999999999418. input_tokens=220, output_tokens=133
+19:23:39,119 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:39,123 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.4799999999959255. input_tokens=180, output_tokens=80
+19:23:39,901 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:39,904 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.586999999999534. input_tokens=186, output_tokens=103
+19:23:40,191 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:40,193 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.764999999999418. input_tokens=176, output_tokens=60
+19:23:40,426 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:40,429 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.712999999988824. input_tokens=191, output_tokens=90
+19:23:40,495 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:40,500 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.7550000000046566. input_tokens=178, output_tokens=56
+19:23:40,540 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:40,543 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.1350000000093132. input_tokens=174, output_tokens=83
+19:23:40,899 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:40,921 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.812999999994645. input_tokens=180, output_tokens=67
+19:23:40,952 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:40,974 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 9.044999999998254. input_tokens=381, output_tokens=247
+19:23:41,2 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:41,4 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:41,7 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 7.532000000006519. input_tokens=249, output_tokens=183
+19:23:41,8 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.088000000003376. input_tokens=191, output_tokens=76
+19:23:41,969 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:41,973 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 8.347999999998137. input_tokens=239, output_tokens=203
+19:23:42,483 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:42,488 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 10.032999999995809. input_tokens=453, output_tokens=288
+19:23:42,744 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:42,748 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.8429999999934807. input_tokens=176, output_tokens=61
+19:23:43,125 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:43,131 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.5869999999995343. input_tokens=153, output_tokens=53
+19:23:43,232 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:43,239 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.783000000010361. input_tokens=182, output_tokens=114
+19:23:43,342 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:43,344 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.150000000008731. input_tokens=168, output_tokens=73
+19:23:43,499 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:43,503 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 15.286999999996624. input_tokens=741, output_tokens=445
+19:23:43,996 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:43,999 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.388999999995576. input_tokens=223, output_tokens=158
+19:23:44,372 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:44,374 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.777000000001863. input_tokens=198, output_tokens=106
+19:23:44,744 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:44,748 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.247000000003027. input_tokens=181, output_tokens=110
+19:23:44,827 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:44,831 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 16.00700000001234. input_tokens=634, output_tokens=470
+19:23:45,220 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:45,224 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 10.714999999996508. input_tokens=380, output_tokens=265
+19:23:45,250 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:45,252 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.237999999997555. input_tokens=198, output_tokens=106
+19:23:45,555 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:45,559 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 12.073999999993248. input_tokens=616, output_tokens=369
+19:23:45,578 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:45,582 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.150999999998021. input_tokens=212, output_tokens=133
+19:23:46,247 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:46,249 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.240000000005239. input_tokens=178, output_tokens=107
+19:23:46,464 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:46,468 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 20.87599999998929. input_tokens=4165, output_tokens=500
+19:23:46,545 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:46,548 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.415999999997439. input_tokens=180, output_tokens=81
+19:23:47,423 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:47,425 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.450999999986379. input_tokens=175, output_tokens=91
+19:23:47,443 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:47,446 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.524000000004889. input_tokens=233, output_tokens=146
+19:23:47,721 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:47,725 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.379999999990105. input_tokens=199, output_tokens=116
+19:23:47,820 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:47,823 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.5979999999981374. input_tokens=186, output_tokens=58
+19:23:48,287 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:48,291 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 10.694000000003143. input_tokens=319, output_tokens=242
+19:23:48,615 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:48,618 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 16.24900000001071. input_tokens=869, output_tokens=500
+19:23:48,953 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:48,956 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 10.778000000005704. input_tokens=306, output_tokens=224
+19:23:49,8 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:49,10 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.4510000000009313. input_tokens=200, output_tokens=87
+19:23:49,79 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:49,83 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.25. input_tokens=180, output_tokens=93
+19:23:49,197 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:49,200 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.9470000000001164. input_tokens=196, output_tokens=102
+19:23:49,372 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:49,376 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.8260000000009313. input_tokens=163, output_tokens=58
+19:23:49,660 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:49,662 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.419999999998254. input_tokens=243, output_tokens=174
+19:23:50,23 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:50,25 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.2010000000009313. input_tokens=175, output_tokens=49
+19:23:50,280 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:50,284 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.907999999995809. input_tokens=224, output_tokens=155
+19:23:50,406 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:50,410 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.906999999991967. input_tokens=185, output_tokens=166
+19:23:50,412 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:50,421 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.419999999998254. input_tokens=252, output_tokens=147
+19:23:50,618 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:50,621 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 11.646999999997206. input_tokens=312, output_tokens=306
+19:23:50,715 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:50,720 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.970000000001164. input_tokens=207, output_tokens=144
+19:23:50,915 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:50,919 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.4719999999942956. input_tokens=177, output_tokens=75
+19:23:50,988 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:50,993 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.56600000000617. input_tokens=170, output_tokens=82
+19:23:51,171 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:51,175 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.1639999999897555. input_tokens=172, output_tokens=38
+19:23:51,715 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:51,718 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 10.743999999991502. input_tokens=318, output_tokens=272
+19:23:52,140 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:52,142 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.764999999999418. input_tokens=183, output_tokens=56
+19:23:52,247 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:52,251 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.294000000008964. input_tokens=196, output_tokens=83
+19:23:52,615 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:52,619 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.9989999999961583. input_tokens=182, output_tokens=95
+19:23:52,641 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:52,644 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 13.519000000000233. input_tokens=631, output_tokens=423
+19:23:52,683 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:52,684 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.657999999995809. input_tokens=183, output_tokens=55
+19:23:52,799 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:52,800 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.5499999999883585. input_tokens=298, output_tokens=164
+19:23:53,6 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:53,8 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.346000000005006. input_tokens=198, output_tokens=86
+19:23:53,19 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:53,21 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.819999999992433. input_tokens=183, output_tokens=89
+19:23:53,50 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:53,51 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.6300000000046566. input_tokens=184, output_tokens=51
+19:23:53,170 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:53,173 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 14.529999999998836. input_tokens=713, output_tokens=413
+19:23:53,244 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:53,247 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.62599999998929. input_tokens=175, output_tokens=69
+19:23:53,423 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:53,426 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.139999999999418. input_tokens=178, output_tokens=79
+19:23:53,573 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:53,576 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.5830000000132713. input_tokens=190, output_tokens=50
+19:23:53,750 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:53,754 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.027000000001863. input_tokens=204, output_tokens=111
+19:23:53,777 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:53,778 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.3649999999906868. input_tokens=206, output_tokens=82
+19:23:53,784 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:53,785 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.701000000000931. input_tokens=203, output_tokens=124
+19:23:53,861 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:53,865 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 8.28200000000652. input_tokens=343, output_tokens=213
+19:23:54,288 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:54,293 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.5720000000001164. input_tokens=176, output_tokens=55
+19:23:55,300 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:55,304 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 12.813999999998487. input_tokens=325, output_tokens=343
+19:23:55,342 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:55,347 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.1710000000020955. input_tokens=183, output_tokens=101
+19:23:55,938 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:55,963 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.24199999999837. input_tokens=228, output_tokens=129
+19:23:56,18 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:56,22 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 9.551999999996042. input_tokens=264, output_tokens=253
+19:23:56,56 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:56,59 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.8849999999947613. input_tokens=181, output_tokens=68
+19:23:56,275 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:56,278 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.134999999994761. input_tokens=245, output_tokens=104
+19:23:56,841 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:56,845 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.7930000000051223. input_tokens=185, output_tokens=88
+19:23:57,23 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:57,27 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 14.277000000001863. input_tokens=331, output_tokens=379
+19:23:57,933 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:57,938 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.690000000002328. input_tokens=178, output_tokens=72
+19:23:57,960 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:57,962 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.940000000002328. input_tokens=210, output_tokens=127
+19:23:57,974 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:57,977 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.968000000008033. input_tokens=184, output_tokens=127
+19:23:58,658 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:58,661 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.793999999994412. input_tokens=181, output_tokens=119
+19:23:59,329 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:23:59,333 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.5460000000020955. input_tokens=209, output_tokens=146
+19:24:00,416 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:00,419 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.455000000001746. input_tokens=178, output_tokens=97
+19:24:01,68 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:01,72 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.76600000000326. input_tokens=249, output_tokens=169
+19:24:01,300 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:01,304 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 7.876000000003842. input_tokens=271, output_tokens=172
+19:24:01,538 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:01,541 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.5789999999979045. input_tokens=181, output_tokens=88
+19:24:01,746 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:01,750 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.402000000001863. input_tokens=249, output_tokens=175
+19:24:02,109 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:02,114 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 11.194000000003143. input_tokens=293, output_tokens=287
+19:24:02,125 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:02,128 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.4660000000003492. input_tokens=179, output_tokens=84
+19:24:02,255 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:02,258 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 8.478000000002794. input_tokens=439, output_tokens=247
+19:24:02,314 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:02,318 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 9.673999999999069. input_tokens=247, output_tokens=217
+19:24:02,488 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:02,490 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.5509999999922. input_tokens=205, output_tokens=113
+19:24:02,824 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:02,842 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.987999999997555. input_tokens=224, output_tokens=154
+19:24:03,76 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:03,80 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 14.786999999996624. input_tokens=376, output_tokens=336
+19:24:03,543 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:03,548 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 10.745999999999185. input_tokens=340, output_tokens=283
+19:24:03,839 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:03,842 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.4219999999913853. input_tokens=189, output_tokens=78
+19:24:03,862 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:03,865 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.8360000000102445. input_tokens=222, output_tokens=150
+19:24:04,563 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:04,567 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.8150000000023283. input_tokens=180, output_tokens=67
+19:24:04,701 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:04,703 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.444000000003143. input_tokens=175, output_tokens=41
+19:24:04,750 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:04,752 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.418000000005122. input_tokens=208, output_tokens=121
+19:24:04,881 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:04,884 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.754000000000815. input_tokens=169, output_tokens=61
+19:24:05,211 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:05,214 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.370999999999185. input_tokens=181, output_tokens=50
+19:24:05,228 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:05,230 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 9.20799999999872. input_tokens=319, output_tokens=236
+19:24:05,481 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:05,485 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.3690000000060536. input_tokens=191, output_tokens=78
+19:24:05,530 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:05,534 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.228000000002794. input_tokens=212, output_tokens=101
+19:24:05,825 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:05,831 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 9.771000000007916. input_tokens=248, output_tokens=236
+19:24:06,41 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:06,46 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.7269999999989523. input_tokens=191, output_tokens=92
+19:24:06,82 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:06,87 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 13.402000000001863. input_tokens=515, output_tokens=393
+19:24:06,137 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:06,141 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 11.846000000005006. input_tokens=482, output_tokens=346
+19:24:06,182 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:06,187 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.105999999999767. input_tokens=171, output_tokens=73
+19:24:06,248 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:06,252 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 12.67500000000291. input_tokens=326, output_tokens=323
+19:24:06,389 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:06,393 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:06,398 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 8.420000000012806. input_tokens=267, output_tokens=233
+19:24:06,401 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 10.122000000003027. input_tokens=311, output_tokens=261
+19:24:06,966 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:06,970 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.896000000007916. input_tokens=245, output_tokens=145
+19:24:07,22 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:07,25 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.1820000000006985. input_tokens=188, output_tokens=76
+19:24:07,154 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:07,158 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 14.536999999996624. input_tokens=349, output_tokens=405
+19:24:07,256 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:07,262 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.396999999997206. input_tokens=191, output_tokens=82
+19:24:07,638 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:07,642 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.073999999993248. input_tokens=173, output_tokens=73
+19:24:07,785 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:07,791 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.247999999992317. input_tokens=224, output_tokens=153
+19:24:07,793 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:07,797 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 14.040999999997439. input_tokens=616, output_tokens=443
+19:24:08,280 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:08,287 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.7960000000020955. input_tokens=307, output_tokens=167
+19:24:09,800 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:09,806 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.256999999997788. input_tokens=203, output_tokens=147
+19:24:10,110 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:10,117 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 17.864000000001397. input_tokens=1235, output_tokens=494
+19:24:10,161 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_summarized_entities.parquet
+19:24:10,287 graphrag.index.run INFO Running workflow: create_base_entity_graph...
+19:24:10,287 graphrag.index.run INFO dependencies for create_base_entity_graph: ['create_summarized_entities']
+19:24:10,288 graphrag.index.run INFO read table from storage: create_summarized_entities.parquet
+19:24:10,294 datashaper.workflow.workflow INFO executing verb cluster_graph
+19:24:10,380 datashaper.workflow.workflow INFO executing verb select
+19:24:10,382 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_base_entity_graph.parquet
+19:24:10,473 graphrag.index.run INFO Running workflow: create_final_entities...
+19:24:10,474 graphrag.index.run INFO dependencies for create_final_entities: ['create_base_entity_graph']
+19:24:10,474 graphrag.index.run INFO read table from storage: create_base_entity_graph.parquet
+19:24:10,482 datashaper.workflow.workflow INFO executing verb unpack_graph
+19:24:10,516 datashaper.workflow.workflow INFO executing verb rename
+19:24:10,519 datashaper.workflow.workflow INFO executing verb select
+19:24:10,522 datashaper.workflow.workflow INFO executing verb dedupe
+19:24:10,527 datashaper.workflow.workflow INFO executing verb rename
+19:24:10,530 datashaper.workflow.workflow INFO executing verb filter
+19:24:10,539 datashaper.workflow.workflow INFO executing verb text_split
+19:24:10,544 datashaper.workflow.workflow INFO executing verb drop
+19:24:10,547 datashaper.workflow.workflow INFO executing verb merge
+19:24:10,564 datashaper.workflow.workflow INFO executing verb text_embed
+19:24:10,565 graphrag.llm.openai.create_openai_client INFO Creating OpenAI client base_url=None
+19:24:10,579 graphrag.index.llm.load_llm INFO create TPM/RPM limiter for text-embedding-3-small: TPM=0, RPM=0
+19:24:10,579 graphrag.index.llm.load_llm INFO create concurrency limiter for text-embedding-3-small: 25
+19:24:10,597 graphrag.index.verbs.text.embed.strategies.openai INFO embedding 288 inputs via 288 snippets using 18 batches. max_batch_size=16, max_tokens=8191
+19:24:11,161 httpx INFO HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+19:24:11,168 httpx INFO HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+19:24:11,170 httpx INFO HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+19:24:11,179 httpx INFO HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+19:24:11,184 httpx INFO HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+19:24:11,186 httpx INFO HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+19:24:11,190 httpx INFO HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+19:24:11,193 httpx INFO HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+19:24:11,204 httpx INFO HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+19:24:11,211 httpx INFO HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+19:24:11,223 httpx INFO HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+19:24:11,248 httpx INFO HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+19:24:11,251 httpx INFO HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+19:24:11,259 httpx INFO HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+19:24:11,266 httpx INFO HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+19:24:11,273 httpx INFO HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+19:24:11,341 httpx INFO HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+19:24:11,724 httpx INFO HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+19:24:11,834 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 1.2269999999989523. input_tokens=1087, output_tokens=0
+19:24:11,866 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 1.2550000000046566. input_tokens=655, output_tokens=0
+19:24:11,883 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 1.279000000009546. input_tokens=1512, output_tokens=0
+19:24:11,896 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 1.2899999999935972. input_tokens=689, output_tokens=0
+19:24:11,908 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 1.2989999999990687. input_tokens=1461, output_tokens=0
+19:24:11,918 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 1.3150000000023283. input_tokens=917, output_tokens=0
+19:24:11,928 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 1.3250000000116415. input_tokens=2193, output_tokens=0
+19:24:11,937 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 1.3319999999948777. input_tokens=989, output_tokens=0
+19:24:11,946 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 1.3369999999995343. input_tokens=662, output_tokens=0
+19:24:11,984 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 1.379000000000815. input_tokens=805, output_tokens=0
+19:24:11,995 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 1.3840000000054715. input_tokens=697, output_tokens=0
+19:24:12,4 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 1.3990000000048894. input_tokens=1379, output_tokens=0
+19:24:12,24 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 1.422999999995227. input_tokens=2583, output_tokens=0
+19:24:12,41 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 1.434000000008382. input_tokens=1052, output_tokens=0
+19:24:12,50 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 1.4479999999894062. input_tokens=2041, output_tokens=0
+19:24:12,59 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 1.448999999993248. input_tokens=821, output_tokens=0
+19:24:12,137 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 1.536999999996624. input_tokens=2089, output_tokens=0
+19:24:12,570 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 1.9619999999995343. input_tokens=2320, output_tokens=0
+19:24:12,611 datashaper.workflow.workflow INFO executing verb drop
+19:24:12,618 datashaper.workflow.workflow INFO executing verb filter
+19:24:12,629 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_final_entities.parquet
+19:24:12,746 graphrag.index.run INFO Running workflow: create_final_nodes...
+19:24:12,746 graphrag.index.run INFO dependencies for create_final_nodes: ['create_base_entity_graph']
+19:24:12,746 graphrag.index.run INFO read table from storage: create_base_entity_graph.parquet
+19:24:12,757 datashaper.workflow.workflow INFO executing verb layout_graph
+19:24:12,954 datashaper.workflow.workflow INFO executing verb unpack_graph
+19:24:12,993 datashaper.workflow.workflow INFO executing verb unpack_graph
+19:24:13,114 datashaper.workflow.workflow INFO executing verb drop
+19:24:13,118 datashaper.workflow.workflow INFO executing verb filter
+19:24:13,132 datashaper.workflow.workflow INFO executing verb select
+19:24:13,136 datashaper.workflow.workflow INFO executing verb rename
+19:24:13,141 datashaper.workflow.workflow INFO executing verb join
+19:24:13,150 datashaper.workflow.workflow INFO executing verb convert
+19:24:13,167 datashaper.workflow.workflow INFO executing verb rename
+19:24:13,167 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_final_nodes.parquet
+19:24:13,399 graphrag.index.run INFO Running workflow: create_final_communities...
+19:24:13,399 graphrag.index.run INFO dependencies for create_final_communities: ['create_base_entity_graph']
+19:24:13,399 graphrag.index.run INFO read table from storage: create_base_entity_graph.parquet
+19:24:13,412 datashaper.workflow.workflow INFO executing verb unpack_graph
+19:24:13,449 datashaper.workflow.workflow INFO executing verb unpack_graph
+19:24:13,486 datashaper.workflow.workflow INFO executing verb aggregate_override
+19:24:13,494 datashaper.workflow.workflow INFO executing verb join
+19:24:13,506 datashaper.workflow.workflow INFO executing verb join
+19:24:13,518 datashaper.workflow.workflow INFO executing verb concat
+19:24:13,524 datashaper.workflow.workflow INFO executing verb filter
+19:24:13,607 datashaper.workflow.workflow INFO executing verb aggregate_override
+19:24:13,619 datashaper.workflow.workflow INFO executing verb join
+19:24:13,626 datashaper.workflow.workflow INFO executing verb filter
+19:24:13,639 datashaper.workflow.workflow INFO executing verb fill
+19:24:13,645 datashaper.workflow.workflow INFO executing verb merge
+19:24:13,653 datashaper.workflow.workflow INFO executing verb copy
+19:24:13,659 datashaper.workflow.workflow INFO executing verb select
+19:24:13,660 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_final_communities.parquet
+19:24:13,768 graphrag.index.run INFO Running workflow: join_text_units_to_entity_ids...
+19:24:13,769 graphrag.index.run INFO dependencies for join_text_units_to_entity_ids: ['create_final_entities']
+19:24:13,769 graphrag.index.run INFO read table from storage: create_final_entities.parquet
+19:24:13,790 datashaper.workflow.workflow INFO executing verb select
+19:24:13,797 datashaper.workflow.workflow INFO executing verb unroll
+19:24:13,804 datashaper.workflow.workflow INFO executing verb aggregate_override
+19:24:13,807 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table join_text_units_to_entity_ids.parquet
+19:24:13,898 graphrag.index.run INFO Running workflow: create_final_relationships...
+19:24:13,898 graphrag.index.run INFO dependencies for create_final_relationships: ['create_base_entity_graph', 'create_final_nodes']
+19:24:13,898 graphrag.index.run INFO read table from storage: create_base_entity_graph.parquet
+19:24:13,902 graphrag.index.run INFO read table from storage: create_final_nodes.parquet
+19:24:13,917 datashaper.workflow.workflow INFO executing verb unpack_graph
+19:24:13,956 datashaper.workflow.workflow INFO executing verb filter
+19:24:13,974 datashaper.workflow.workflow INFO executing verb rename
+19:24:13,981 datashaper.workflow.workflow INFO executing verb filter
+19:24:14,0 datashaper.workflow.workflow INFO executing verb drop
+19:24:14,7 datashaper.workflow.workflow INFO executing verb compute_edge_combined_degree
+19:24:14,16 datashaper.workflow.workflow INFO executing verb convert
+19:24:14,30 datashaper.workflow.workflow INFO executing verb convert
+19:24:14,31 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_final_relationships.parquet
+19:24:14,134 graphrag.index.run INFO Running workflow: join_text_units_to_relationship_ids...
+19:24:14,135 graphrag.index.run INFO dependencies for join_text_units_to_relationship_ids: ['create_final_relationships']
+19:24:14,135 graphrag.index.run INFO read table from storage: create_final_relationships.parquet
+19:24:14,152 datashaper.workflow.workflow INFO executing verb select
+19:24:14,159 datashaper.workflow.workflow INFO executing verb unroll
+19:24:14,167 datashaper.workflow.workflow INFO executing verb aggregate_override
+19:24:14,177 datashaper.workflow.workflow INFO executing verb select
+19:24:14,179 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table join_text_units_to_relationship_ids.parquet
+19:24:14,273 graphrag.index.run INFO Running workflow: create_final_community_reports...
+19:24:14,273 graphrag.index.run INFO dependencies for create_final_community_reports: ['create_final_relationships', 'create_final_nodes']
+19:24:14,273 graphrag.index.run INFO read table from storage: create_final_relationships.parquet
+19:24:14,275 graphrag.index.run INFO read table from storage: create_final_nodes.parquet
+19:24:14,293 datashaper.workflow.workflow INFO executing verb prepare_community_reports_nodes
+19:24:14,306 datashaper.workflow.workflow INFO executing verb prepare_community_reports_edges
+19:24:14,316 datashaper.workflow.workflow INFO executing verb restore_community_hierarchy
+19:24:14,326 datashaper.workflow.workflow INFO executing verb prepare_community_reports
+19:24:14,327 graphrag.index.verbs.graph.report.prepare_community_reports INFO Number of nodes at level=4 => 288
+19:24:14,343 graphrag.index.verbs.graph.report.prepare_community_reports INFO Number of nodes at level=3 => 288
+19:24:14,356 graphrag.index.verbs.graph.report.prepare_community_reports INFO Number of nodes at level=2 => 288
+19:24:14,369 graphrag.index.verbs.graph.report.prepare_community_reports INFO Number of nodes at level=1 => 288
+19:24:14,410 graphrag.index.verbs.graph.report.prepare_community_reports INFO Number of nodes at level=0 => 288
+19:24:14,461 datashaper.workflow.workflow INFO executing verb create_community_reports
+19:24:38,782 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:38,797 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 24.320999999996275. input_tokens=3011, output_tokens=802
+19:24:50,833 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:24:50,842 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 36.36999999999534. input_tokens=17412, output_tokens=947
+19:25:20,943 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:25:20,958 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 30.047000000005937. input_tokens=3836, output_tokens=789
+19:25:21,801 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:25:21,807 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 30.90099999999802. input_tokens=2650, output_tokens=824
+19:25:49,38 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:25:49,46 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 27.16599999999744. input_tokens=3316, output_tokens=787
+19:25:56,974 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:25:56,982 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 35.10599999999977. input_tokens=3690, output_tokens=1003
+19:26:12,234 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:12,247 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 15.179000000003725. input_tokens=2132, output_tokens=443
+19:26:14,115 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:14,120 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 17.052999999999884. input_tokens=2756, output_tokens=539
+19:26:14,129 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:14,133 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 17.069999999992433. input_tokens=2142, output_tokens=541
+19:26:14,957 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:14,963 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 17.895000000004075. input_tokens=2157, output_tokens=563
+19:26:17,288 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:17,293 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 20.23200000000361. input_tokens=2602, output_tokens=650
+19:26:17,567 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:17,570 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 20.511999999987893. input_tokens=2581, output_tokens=545
+19:26:18,162 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:18,168 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 21.097999999998137. input_tokens=2227, output_tokens=498
+19:26:19,868 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:19,875 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 22.773999999990338. input_tokens=2654, output_tokens=747
+19:26:20,135 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:20,141 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 23.036999999996624. input_tokens=2166, output_tokens=678
+19:26:22,473 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:22,478 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 25.36599999999453. input_tokens=3472, output_tokens=694
+19:26:24,260 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:24,268 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 27.18599999998696. input_tokens=2958, output_tokens=787
+19:26:24,990 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:24,997 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 27.919999999998254. input_tokens=5707, output_tokens=818
+19:26:26,98 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:26,101 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 29.004000000000815. input_tokens=2294, output_tokens=804
+19:26:26,298 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:26,303 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 29.247000000003027. input_tokens=3011, output_tokens=825
+19:26:26,726 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:26,732 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 29.645999999993364. input_tokens=2610, output_tokens=812
+19:26:26,735 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:26,741 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 29.635000000009313. input_tokens=4874, output_tokens=790
+19:26:27,203 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:27,209 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 30.09900000000198. input_tokens=3495, output_tokens=822
+19:26:27,635 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:27,643 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 30.55800000000454. input_tokens=3833, output_tokens=884
+19:26:28,132 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:28,141 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 31.038000000000466. input_tokens=3610, output_tokens=854
+19:26:28,890 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:28,897 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 31.788999999989755. input_tokens=2337, output_tokens=792
+19:26:30,5 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:30,9 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 32.9320000000007. input_tokens=4855, output_tokens=879
+19:26:30,403 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:30,408 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 33.322000000000116. input_tokens=2687, output_tokens=937
+19:26:30,859 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:30,867 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 33.76900000000023. input_tokens=2639, output_tokens=852
+19:26:31,124 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:31,129 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 34.04899999999907. input_tokens=2834, output_tokens=857
+19:26:33,208 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:33,217 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 36.14299999999639. input_tokens=5158, output_tokens=980
+19:26:36,65 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:36,74 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 23.8240000000078. input_tokens=2665, output_tokens=617
+19:26:44,299 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:44,307 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 30.18399999999383. input_tokens=4351, output_tokens=932
+19:26:57,811 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:57,820 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 13.414999999993597. input_tokens=2113, output_tokens=375
+19:26:58,527 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:26:58,530 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 14.129999999990105. input_tokens=2106, output_tokens=461
+19:27:00,618 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:27:00,620 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 16.228000000002794. input_tokens=2169, output_tokens=418
+19:27:01,300 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:27:01,304 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 16.88499999999476. input_tokens=2146, output_tokens=519
+19:27:01,868 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:27:01,871 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 17.460999999995693. input_tokens=2107, output_tokens=459
+19:27:02,568 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:27:02,570 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 18.179999999993015. input_tokens=2452, output_tokens=608
+19:27:03,114 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:27:03,121 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 18.72599999999511. input_tokens=2208, output_tokens=520
+19:27:04,423 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:27:04,430 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 20.023000000001048. input_tokens=2226, output_tokens=547
+19:27:04,535 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:27:04,541 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 20.144000000000233. input_tokens=2098, output_tokens=538
+19:27:06,224 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:27:06,229 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 21.827000000004773. input_tokens=2322, output_tokens=578
+19:27:07,332 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:27:07,338 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 22.94199999999546. input_tokens=2119, output_tokens=628
+19:27:12,32 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:27:12,40 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 27.631999999997788. input_tokens=4646, output_tokens=796
+19:27:13,708 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:27:13,715 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 29.304999999993015. input_tokens=4161, output_tokens=845
+19:27:14,709 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:27:14,717 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 30.29899999999907. input_tokens=6035, output_tokens=870
+19:27:17,946 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:27:17,951 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 33.536999999996624. input_tokens=7035, output_tokens=969
+19:27:17,952 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:27:17,957 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 33.5679999999993. input_tokens=11407, output_tokens=978
+19:27:18,92 httpx INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+19:27:18,97 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 33.67500000000291. input_tokens=6869, output_tokens=940
+19:27:18,153 datashaper.workflow.workflow INFO executing verb window
+19:27:18,157 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_final_community_reports.parquet
+19:27:18,324 graphrag.index.run INFO Running workflow: create_final_text_units...
+19:27:18,325 graphrag.index.run INFO dependencies for create_final_text_units: ['join_text_units_to_entity_ids', 'join_text_units_to_relationship_ids', 'create_base_text_units']
+19:27:18,325 graphrag.index.run INFO read table from storage: join_text_units_to_entity_ids.parquet
+19:27:18,328 graphrag.index.run INFO read table from storage: join_text_units_to_relationship_ids.parquet
+19:27:18,329 graphrag.index.run INFO read table from storage: create_base_text_units.parquet
+19:27:18,347 datashaper.workflow.workflow INFO executing verb select
+19:27:18,356 datashaper.workflow.workflow INFO executing verb rename
+19:27:18,365 datashaper.workflow.workflow INFO executing verb join
+19:27:18,375 datashaper.workflow.workflow INFO executing verb join
+19:27:18,386 datashaper.workflow.workflow INFO executing verb aggregate_override
+19:27:18,397 datashaper.workflow.workflow INFO executing verb select
+19:27:18,398 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_final_text_units.parquet
+19:27:18,497 graphrag.index.run INFO Running workflow: create_base_documents...
+19:27:18,497 graphrag.index.run INFO dependencies for create_base_documents: ['create_final_text_units']
+19:27:18,497 graphrag.index.run INFO read table from storage: create_final_text_units.parquet
+19:27:18,517 datashaper.workflow.workflow INFO executing verb unroll
+19:27:18,527 datashaper.workflow.workflow INFO executing verb select
+19:27:18,537 datashaper.workflow.workflow INFO executing verb rename
+19:27:18,546 datashaper.workflow.workflow INFO executing verb join
+19:27:18,557 datashaper.workflow.workflow INFO executing verb aggregate_override
+19:27:18,567 datashaper.workflow.workflow INFO executing verb join
+19:27:18,578 datashaper.workflow.workflow INFO executing verb rename
+19:27:18,588 datashaper.workflow.workflow INFO executing verb convert
+19:27:18,600 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_base_documents.parquet
+19:27:18,697 graphrag.index.run INFO Running workflow: create_final_documents...
+19:27:18,697 graphrag.index.run INFO dependencies for create_final_documents: ['create_base_documents']
+19:27:18,697 graphrag.index.run INFO read table from storage: create_base_documents.parquet
+19:27:18,718 datashaper.workflow.workflow INFO executing verb rename
+19:27:18,720 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_final_documents.parquet

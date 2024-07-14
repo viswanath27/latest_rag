@@ -34,6 +34,16 @@ Indexing phase is approach of how input data indexing will happen in Graph RAG. 
 Query phase is approach of how the query will be executed in Graph RAG. More details are given [Querying Phase](https://github.com/viswanath27/rag/blob/main/kg_rag/docs/md_files/query.md)
 
 
+## Query to run 
+
+Global query 
+`python -m graphrag.query --root ./ragtest --method global "What are the top themes in this story?"`
+
+Local query 
+`python -m graphrag.query --root ./ragtest --method local "Who is Scrooge, and what are his main relationships?`
+
+## Cost 
+
 # LlamaIndex Graph rag
 
 
